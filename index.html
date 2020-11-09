@@ -1,41 +1,35 @@
-
-
-<!DOCTYPE html>
 <html>
-<head>
-<title>fun work</title>
-<script src="//connect.soundcloud.com/sdk.js"></script>
-<script src="main.js"></script>
-<script>
+  <head>
+  <script>
+    function onSubmit(token) {
+      alert('thanks ' + document.getElementById('field').value);
+    }
 
-			  src="https://code.jquery.com/jquery-3.3.1.js"
-			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-			  crossorigin="anonymous">
-</script>
-</head>
-<body>
-  <h1 style="background-color:DodgerBlue;"><center>Music player</center></h1>
-  <img src="download.jpeg" alt="Trulli" width="400" height="300">
+    function validate(event) {
+      event.preventDefault();
+      if (!document.getElementById('field').value) {
+        alert("You must add text to the required field");
+      } else {
+        grecaptcha.execute();
+      }
+    }
 
-<button type="button" name="stat" id="start"> start</button>
-<button type="button" name="stop" id="stop"> stop</button>
-
-
-
-
-
-<img src="download.jpeg" alt="Trulli" width="400" height="300">
-
-<button type="button" name="stat" id="start1"> start</button>
-<button type="button" name="stop" id="stop1"> stop</button>
-
-
-
-
-
-<img src="qwe.jpeg" alt="Trulli" width="400" height="300">
-
-<button type="button" name="stat" id="start2"> start</button>
-<button type="button" name="stop" id="stop2"> stop</button>
-</body>
+    function onload() {
+      var element = document.getElementById('submit');
+      element.onclick = validate;
+    }
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form>
+      Name: (required) <input id="field" name="field">
+      <div id='recaptcha' class="g-recaptcha"
+          data-sitekey="_your_site_key_"
+          data-callback="onSubmit"
+          data-size="invisible"></div>
+      <button id='submit'>submit</button>
+    </form>
+    <script>onload();</script>
+  </body>
 </html>
